@@ -14,9 +14,11 @@ job('NodeJS Docker example') {
     }
     steps {
         dockerBuildAndPublish {
-            repositoryName('wardviaene/docker-nodejs-demo')
+            dockerHostURI('tcp://ubdockera1.mhp.lan:2376')
+            serverCredentials('ubdockera1')
+            repositoryName('devmhp/docker-example')
             tag('${GIT_REVISION,length=9}')
-            registryCredentials('dockerhub')
+            registryCredentials('docker-devmhp')
             forcePull(false)
             forceTag(false)
             createFingerprints(false)
